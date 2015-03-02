@@ -1,0 +1,38 @@
+{
+  "name": "http-echo-server",
+  "version": "1.0.0",
+  "description": "A simple HTTP echo server",
+  "main": "server.js",
+  "bin": {
+    "http-echo-server": "./bin/http-echo-server"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Thomas Watson Steen <w@tson.dk>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/watson/http-echo-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/watson/http-echo-server/issues"
+  },
+  "homepage": "https://github.com/watson/http-echo-server",
+  "keywords": [
+    "http",
+    "tcp",
+    "echo",
+    "server",
+    "debug",
+    "debugger",
+    "test"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  }
+}
