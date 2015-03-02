@@ -13,6 +13,9 @@ To setup a simple echo-server on Heroku just click this button:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+*Note that the Heroku routing stack will proxy the incoming request and
+add custom HTTP headers.*
+
 Alternatively, to install locally just run:
 
 ```
