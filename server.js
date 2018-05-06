@@ -35,8 +35,7 @@ server.on('connection', function (c) {
     console.log('[connection] event: drain')
   })
   c.on('error', function (err) {
-    console.log('[connection] event: error')
-    throw err
+    console.log('[connection] event: error (%s)', err.message)
   })
   c.on('close', function () {
     console.log('[connection] event: close')
@@ -53,8 +52,7 @@ server.on('close', function () {
 })
 
 server.on('error', function (err) {
-  console.log('[server] event: error')
-  throw err
+  console.log('[server] event: error (%s)', err.message)
 })
 
 server.listen(process.env.PORT)
