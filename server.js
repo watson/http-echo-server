@@ -7,17 +7,17 @@ var cid = 0
 
 server.on('connection', function (c) {
   cid++
-  console.log('[server] event: connection (#%d)', cid)
+  console.log('[server] event: connection (socket#%d)', cid)
   var gotData = false
   c.on('lookup', function (err, address, family) {
     if (err) {
-      console.log('[connection#%d] event: lookup (error: %s)', cid, err.message)
+      console.log('[socket#%d] event: lookup (error: %s)', cid, err.message)
     } else {
-      console.log('[connection#%d] event: lookup (address: %s, family: %s)', cid, address, family)
+      console.log('[socket#%d] event: lookup (address: %s, family: %s)', cid, address, family)
     }
   })
   c.on('data', function (chunk) {
-    console.log('[connection#%d] event: data', cid)
+    console.log('[socket#%d] event: data', cid)
     console.log('--> ' + chunk.toString().split('\n').join('\n--> '))
     if (!gotData) {
       gotData = true
@@ -33,19 +33,19 @@ server.on('connection', function (c) {
     c.write(chunk.toString())
   })
   c.on('end', function () {
-    console.log('[connection#%d] event: end', cid)
+    console.log('[socket#%d] event: end', cid)
   })
   c.on('timeout', function () {
-    console.log('[connection#%d] event: timeout', cid)
+    console.log('[socket#%d] event: timeout', cid)
   })
   c.on('drain', function () {
-    console.log('[connection#%d] event: drain', cid)
+    console.log('[socket#%d] event: drain', cid)
   })
   c.on('error', function (err) {
-    console.log('[connection#%d] event: error (msg: %s)', cid, err.message)
+    console.log('[socket#%d] event: error (msg: %s)', cid, err.message)
   })
   c.on('close', function () {
-    console.log('[connection#%d] event: close', cid)
+    console.log('[socket#%d] event: close', cid)
   })
 })
 
