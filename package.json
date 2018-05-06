@@ -7,7 +7,7 @@
     "http-echo-server": "./bin/http-echo-server"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "standard && node test.js",
     "start": "node server.js"
   },
   "author": "Thomas Watson Steen <w@tson.dk>",
@@ -15,7 +15,9 @@
   "dependencies": {
     "get-port": "^3.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "^11.0.1"
+  },
   "preferGlobal": true,
   "repository": {
     "type": "git",

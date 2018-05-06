@@ -5,6 +5,8 @@ var server = require('net').createServer()
 
 var cid = 0
 
+module.exports = server // for testing
+
 onEmit(server, {ignore: ['connection', 'listening', 'error']}, function (eventName) {
   console.log('[server] event:', eventName)
 })
