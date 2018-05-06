@@ -15,11 +15,11 @@ server.on('connection', function (c) {
     console.log('--> ' + chunk.toString().split('\n').join('\n--> '))
     if (!gotData) {
       gotData = true
-      c.write('HTTP/1.1 200 OK\n')
-      c.write('Date: ' + (new Date()).toString() + '\n')
-      c.write('Connection: close\n')
-      c.write('Content-Type: text/plain\n')
-      c.write('\n')
+      c.write('HTTP/1.1 200 OK\r\n')
+      c.write('Date: ' + (new Date()).toString() + '\r\n')
+      c.write('Connection: close\r\n')
+      c.write('Content-Type: text/plain\r\n')
+      c.write('\r\n')
       setTimeout(function () {
         c.end()
       }, 2000)
