@@ -2,13 +2,11 @@
   "name": "http-echo-server",
   "version": "1.0.0",
   "description": "A simple HTTP echo server",
-  "main": "server.js",
-  "bin": {
-    "http-echo-server": "./bin/http-echo-server"
-  },
+  "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "standard && node test.js",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",

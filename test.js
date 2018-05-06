@@ -3,7 +3,7 @@
 var assert = require('assert')
 var net = require('net')
 
-var server = require('./server')
+var server = require('./')
 
 server.on('listening', function () {
   var port = server.address().port
