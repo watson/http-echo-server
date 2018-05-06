@@ -17,7 +17,7 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/watson/http-echo-server.git"
+    "url": "git+https://github.com/watson/http-echo-server.git"
   },
   "bugs": {
     "url": "https://github.com/watson/http-echo-server/issues"
