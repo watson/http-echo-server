@@ -7,6 +7,9 @@ The server makes no attempt to understand the incoming HTTP request
 hence it doesn't know when the request is completed and therefore just
 terminates the TCP connection 2 seconds after the first data packet.
 
+[![Build status](https://travis-ci.org/watson/http-echo-server.svg?branch=master)](https://travis-ci.org/watson/http-echo-server)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
 ## Installation
 
 To setup a simple echo-server on Heroku just click this button:
