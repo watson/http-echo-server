@@ -1,5 +1,6 @@
 'use strict'
 
+var getPort = require('get-port')
 var server = require('net').createServer()
 
 server.on('connection', function (c) {
@@ -55,4 +56,10 @@ server.on('error', function (err) {
   console.log('[server] event: error (%s)', err.message)
 })
 
-server.listen(process.env.PORT)
+if (process.env.PORT) {
+  server.listen(process.env.PORT)
+} else {
+  getPort({port: 3000}).then(function (port) {
+    server.listen(port)
+  })
+}
