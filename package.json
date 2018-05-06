@@ -31,8 +31,5 @@
     "debug",
     "debugger",
     "test"
-  ],
-  "engines": {
-    "node": "0.10.x"
-  }
+  ]
 }
