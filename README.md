@@ -19,7 +19,14 @@ To setup a simple echo-server on Heroku just click this button:
 *Note that the Heroku routing stack will proxy the incoming request and
 add custom HTTP headers.*
 
-Alternatively, to install locally just run:
+Alternatively, to start it locally just run (only supported on newer
+versions of npm):
+
+```
+npx http-echo-server
+```
+
+Or if you whish to install the module globally:
 
 ```
 npm install http-echo-server -g
