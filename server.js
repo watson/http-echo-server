@@ -7,8 +7,11 @@ server.on('connection', function (c) {
   console.log('[server] event: connection')
   var gotData = false
   c.on('lookup', function (err, address, family) {
-    console.log('[connection] event: lookup (address: %s, family: %s)', address, family)
-    if (err) throw err
+    if (err) {
+      console.log('[connection] event: lookup (error: %s)', err.message)
+    } else {
+      console.log('[connection] event: lookup (address: %s, family: %s)', address, family)
+    }
   })
   c.on('data', function (chunk) {
     console.log('[connection] event: data')
