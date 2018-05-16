@@ -48,6 +48,20 @@ then curl it:
 curl http://localhost:<port>
 ```
 
+## Setting listening port
+
+To set the http port, export the environment variable `port`
+```
+export PORT=3005
+http-echo-server
+```
+
+or as a one line command
+
+```
+PORT=3005 http-echo-server
+```
+
 ## License
 
 MIT
