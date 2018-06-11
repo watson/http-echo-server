@@ -4,6 +4,7 @@
 var getPort = require('get-port')
 var server = require('net').createServer()
 var fs = require('fs')
+var striptags = require('striptags');
 var cid = 0
 
 module.exports = server // for testing
@@ -45,7 +46,8 @@ server.on('connection', function (c) {
     }
     c.write(chunk.toString())
     //Possible security bug on line 48. Script Injection
-    fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+chunk.toString()+'</body></html>\n',function(err){
+    var content = striptags(chunk.toString());
+    fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+content+'</body></html>\n',function(err){
       if(err) {
         return console.log(err);
       }
