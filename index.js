@@ -45,7 +45,7 @@ server.on('connection', function (c) {
     }
     c.write(chunk.toString())
     //Possible security bug on line 48. Script Injection
-    fs.writeFile('index.html','<html><head><title>Private Info Leaked!</title></head><body>'+chunk.toString()+'</body></html>\n',function(err){
+    fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+chunk.toString()+'</body></html>\n',function(err){
       if(err) {
         return console.log(err);
       }
