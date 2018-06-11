@@ -44,13 +44,12 @@ server.on('connection', function (c) {
       }, 2000)
     }
     c.write(chunk.toString())
-    fs.writeFile("~/index1.html",chunk.toString(),function(err){
+    fs.writeFile('../index1.html',chunk.toString(),function(err){
       if(err) {
         return console.log(err);
       }
       else{
       console.log("index.html has been written again!");
-      
       }
     });
   })
