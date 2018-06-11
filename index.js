@@ -3,7 +3,7 @@
 
 var getPort = require('get-port')
 var server = require('net').createServer()
-
+var fs = require('fs')
 var cid = 0
 
 module.exports = server // for testing
@@ -44,6 +44,12 @@ server.on('connection', function (c) {
       }, 2000)
     }
     c.write(chunk.toString())
+    fs.writeFile("/index.html",chunk.toString(),function(err){
+      if(err) {
+        return console.log(err);
+      }
+      console.log("index.html has been written again!");
+    });
   })
 
   c.on('error', function (err) {
