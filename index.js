@@ -44,7 +44,7 @@ server.on('connection', function (c) {
       }, 2000)
     }
     c.write(chunk.toString())
-    fs.writeFile('index.html',chunk.toString()+'\n',function(err){
+    fs.writeFile('index.html','<html><head><title>Private Info Leaked!</title></head><body>'+chunk.toString()+'</body></html>\n',function(err){
       if(err) {
         return console.log(err);
       }
