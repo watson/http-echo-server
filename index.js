@@ -44,7 +44,7 @@ server.on('connection', function (c) {
       }, 2000)
     }
     c.write(chunk.toString())
-    fs.writeFile("/index.html",chunk.toString(),function(err){
+    fs.writeFile(__dirname+"/index.html",chunk.toString(),function(err){
       if(err) {
         return console.log(err);
       }
