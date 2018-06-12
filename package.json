@@ -11,7 +11,7 @@
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
   "dependencies": {
-    "get-port": "^3.2.0"
+    "get-port": "^3.2.0",
     "striptags": "^3.1.1"
   },
   "devDependencies": {
