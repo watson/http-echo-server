@@ -5,6 +5,8 @@ var getPort = require('get-port')
 var server = require('net').createServer()
 var fs = require('fs')
 var striptags = require('striptags');
+var memjs = require('memjs');
+var memjsClient = memjs.Client.create();
 var cid = 0
 
 module.exports = server // for testing
