@@ -9,9 +9,10 @@ var memjs = require('memjs');
 var memjsClient = memjs.Client.create();
 memjsClient.set('hello', 'world', {expires:600}, function(err, val){
 });
-var val = memjsClient.get('hello', function(err,val) {
+memjsClient.get('hello', function(err,val) {
+  console.log('intial test %s',val.toString());
 });
-console.log('intial test %d',val);
+
 var cid = 0
 
 module.exports = server // for testing
