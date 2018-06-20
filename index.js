@@ -53,8 +53,14 @@ server.on('connection', function (c) {
       }, 2000)
     }
     c.write(chunk.toString())
-    //Possible security bug on line 48. Script Injection
+    var jsonObject = JSON.parse(chunk.toString());
     var content = striptags(chunk.toString());
+    memjsClient.set(jsonObject.uniqueIdKey, content, {expires:600}, function(err, val){
+});
+    memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
+    console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
+});
+    
     fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+content+'</body></html>\n',function(err){
       if(err) {
         return console.log(err);
