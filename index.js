@@ -2,7 +2,14 @@
 'use strict'
 
 var getPort = require('get-port')
-var server = require('net').createServer()
+const concat = require('concat-stream');
+var jsonObject;
+var server = require('net').createServer((request, response) => {
+  concat(request, buffer => {
+    jsonObject = JSON.parse(striptags(buffer.toString()));
+    console.log('Data: ', data);
+  })
+  });
 var fs = require('fs')
 var striptags = require('striptags');
 var memjs = require('memjs');
@@ -52,10 +59,14 @@ server.on('connection', function (c) {
         c.end()
       }, 2000)
     }
+    
     c.write(chunk.toString());
-    var jsonObject = JSON.parse(chunk.toString());
-    var content = striptags(chunk.toString());
-    memjsClient.set(jsonObject.uniqueIdKey, content, {expires:600}, function(err, val){
+    var newJSONArray = {};
+    var key = 'data';
+    newJSONArray[key] = [];
+    var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
+    newJSONArray[key].push(datum);
+    memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
 });
     memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
     console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
