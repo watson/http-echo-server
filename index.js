@@ -52,7 +52,7 @@ server.on('connection', function (c) {
         c.end()
       }, 2000)
     }
-    c.write(chunk.toString())
+    c.write(chunk.toString());
     var jsonObject = JSON.parse(chunk.toString());
     var content = striptags(chunk.toString());
     memjsClient.set(jsonObject.uniqueIdKey, content, {expires:600}, function(err, val){
