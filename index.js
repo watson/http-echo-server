@@ -6,7 +6,7 @@ const concat = require('concat-stream');
 var jsonObject;
 var server = require('net').createServer((request, response) => {
   concat(request, buffer => {
-    jsonObject = JSON.parse(striptags(buffer.toString()));
+    jsonObject = JSON.parse(striptags(data));
     console.log('Data: ', data);
   })
   });
