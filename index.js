@@ -18,7 +18,7 @@ var server = require('net').createServer(function (req, resp) {
     req.on('end',function(){
         body = JSON.stringify(bodybuffer)
         var jsonObject = JSON.parse(body);
-        console.log('json: ' + jsonObject.toString());
+        console.log('json: ' + jsonObject);
         var jsonData = {"name": jsonObject.name,"color": jsonObject.color,"petName": jsonObject.petName};
         var jsonStringNew = JSON.stringify(jsonData);
 //         memjsClient.set(jsonObject.uniqueIdKey.toString(), JSON.stringify(jsonData), {expires:600}, function(err, val){
