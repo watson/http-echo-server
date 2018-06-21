@@ -13,7 +13,7 @@ app.post('/', function(req, res) {
     'use strict';
     var jsonData = {"name": req.body.name,"color": req.body.color,"petName": req.body.petName};
     console.log(req.body);
-    console.log('data saved:'+jsonData.toString());
+    console.log('data saved:'+JSON.stringyfy(jsonData));
     memjsClient.set(req.body.uniqueIdKey, JSON.stringify(jsonData), {expires:600}, function(err, val){
     });
     memjsClient.get(req.body.uniqueIdKey, function(err,val) {
