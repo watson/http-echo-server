@@ -14,7 +14,7 @@ app.post('/', function(req, res) {
     
     console.log(req.body);
     var jsonData = {"name": req.body.name,"color": req.body.color,"petName": req.body.petName};
-    console.log('data saved:'+JSON.stringyfy(jsonData));
+    console.log('data saved:'+JSON.stringify(jsonData));
     memjsClient.set(req.body.uniqueIdKey, JSON.stringify(jsonData), {expires:600}, function(err, val){
     });
     res.sendStatus(200);
