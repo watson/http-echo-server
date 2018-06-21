@@ -56,19 +56,14 @@ server.on('connection', function (c) {
     }
     
     c.write(chunk.toString());
-     body += chunk;
+     body += chunk.toString();
   })
 
   c.on('error', function (err) {
     console.log('[socket#%d] event: error (msg: %s)', _cid, err.message)
   })
   
- 
-  
-  
-})
-
-server.on('end', function () {
+ c.on('end', function () {
     console.log('body: ' + body.toString());
       var jsonObject = JSON.parse(body.toString());
 
@@ -83,6 +78,11 @@ server.on('end', function () {
     console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
   });
 })
+  
+  
+})
+
+
 
 server.on('listening', function () {
   var port = server.address().port
