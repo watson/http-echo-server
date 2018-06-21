@@ -11,23 +11,18 @@ app.use(bodyParser.json());
 
 app.post('/', function(req, res) {
     'use strict';
-    if(req.body.length()>1){
-        console.log(req.body);
+    
+    console.log(req.body);
     var jsonData = {"name": req.body.name,"color": req.body.color,"petName": req.body.petName};
     console.log('data saved:'+JSON.stringyfy(jsonData));
     memjsClient.set(req.body.uniqueIdKey, JSON.stringify(jsonData), {expires:600}, function(err, val){
     });
     res.sendStatus(200);
-    }
-   
-     var content ='';
+
      memjsClient.get(req.body.uniqueIdKey, function(err,val) {
       console.log('key: %s,value: %s',req.body.uniqueIdKey,val);
-      content = val;
     });   
-    var content = striptags(content);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(content);
+   
     
 });
 app.get('/', function(req, res) {
@@ -37,7 +32,6 @@ app.get('/', function(req, res) {
       console.log('key: %s,value: %s',id,val);
       responseBody = val;
     });   
-
   res.send(responseBody);
 });
 app.listen(3000);
