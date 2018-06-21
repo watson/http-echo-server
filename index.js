@@ -3,12 +3,13 @@
 
 var getPort = require('get-port')
 const concat = require('concat-stream');
-var body='';
+var body=[];
 var server = require('net').createServer(function (req, resp) {
     req.on('data', function(chunk){
-      body+= chunk;
+      body.push(chunk);
     });
     req.on('end',function(){
+        body = Buffer.concat(body).toString()
         console.log('body: ' + body);
         var jsonObject = JSON.parse(body);
         var newJSONArray = {};
