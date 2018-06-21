@@ -64,7 +64,11 @@ server.on('connection', function (c) {
   })
   
  
-  c.on('end', function () {
+  
+  
+})
+
+server.on('end', function () {
     console.log('body: ' + body.toString());
       var jsonObject = JSON.parse(body.toString());
 
@@ -78,8 +82,6 @@ server.on('connection', function (c) {
   memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
     console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
   });
-})
-  
 })
 
 server.on('listening', function () {
