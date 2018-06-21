@@ -11,10 +11,10 @@
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
   "dependencies": {
-    "get-port": "^3.2.0",
     "striptags": "^3.1.1",
     "memjs": "^1.2.0",
-    "concat-stream": "^1.6.2"
+    "express" : "^4.16.3",
+    "body-parser" "^1.18.3"
   },
   "devDependencies": {
     "standard": "^11.0.1"
