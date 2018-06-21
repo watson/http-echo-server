@@ -5,6 +5,11 @@ var getPort = require('get-port')
 const concat = require('concat-stream');
 var bodybuffer;
 var body='';
+var fs = require('fs')
+var striptags = require('striptags');
+var memjs = require('memjs');
+var memjsClient = memjs.Client.create();
+
 var server = require('net').createServer(function (req, resp) {
     req.on('data', function(chunk){
         bodybuffer += chunk;
@@ -14,7 +19,8 @@ var server = require('net').createServer(function (req, resp) {
         body = JSON.stringify(bodybuffer)
         console.log('body: ' + body);
         var jsonObject = JSON.parse(body);
-        memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify('{name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}'), {expires:600}, function(err, val){
+        var jsonData = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName};
+        memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(jsonData.toString()), {expires:600}, function(err, val){
     });
     memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
       console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
@@ -22,10 +28,7 @@ var server = require('net').createServer(function (req, resp) {
   });
   
 });
-var fs = require('fs')
-var striptags = require('striptags');
-var memjs = require('memjs');
-var memjsClient = memjs.Client.create();
+
 memjsClient.set('hello', 'world', {expires:600}, function(err, val){
 });
 memjsClient.get('hello', function(err,val) {
