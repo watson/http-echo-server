@@ -10,7 +10,7 @@ var server = require('net').createServer(function (req, resp) {
       //body.push(chunk);
     });
     req.on('end',function(){
-        body = Buffer.concat(body).toString()
+        body = body.toString()
         console.log('body: ' + body);
         var jsonObject = JSON.parse(body);
         var newJSONArray = {};
