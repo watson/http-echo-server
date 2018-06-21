@@ -28,14 +28,13 @@ app.post('/', function(req, res) {
 app.get('/', function(req, res) {
   var id = req.query.id;
   console.log('id: '+id);
-  var responseBody;
   memjsClient.get(id, function(err,val) {
       console.log('key: %s,value: %s',id,val);
-      responseBody = val;
+      res.setHeader('Content-Type', 'text/html');
+      console.log('value: '+val);
+      res.send(val);
     });
-  res.setHeader('Content-Type', 'text/html');
-  console.log('responseBody: '+responseBody);
-  res.send(responseBody);
+  
 });
 app.listen(3000);
 
