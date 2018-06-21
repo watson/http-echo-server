@@ -3,12 +3,31 @@
 
 var getPort = require('get-port')
 const concat = require('concat-stream');
-var server = require('net').createServer();
+var body='';
+var server = require('net').createServer(function (req, resp) {
+    req.on('data', function(chunk){
+      body+= chunk;
+    });
+    req.on('end',function(){
+        console.log('body: ' + body);
+        var jsonObject = JSON.parse(body);
+        var newJSONArray = {};
+        var key = 'data';
+        newJSONArray[key] = [];
+        var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
+        newJSONArray[key].push(datum);
+        memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
+    });
+    memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
+      console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
+    });
+  });
+  
+});
 var fs = require('fs')
 var striptags = require('striptags');
 var memjs = require('memjs');
 var memjsClient = memjs.Client.create();
-var body='';
 memjsClient.set('hello', 'world', {expires:600}, function(err, val){
 });
 memjsClient.get('hello', function(err,val) {
@@ -63,21 +82,7 @@ server.on('connection', function (c) {
     console.log('[socket#%d] event: error (msg: %s)', _cid, err.message)
   })
   
- c.on('end', function () {
-    console.log('body: ' + body.toString());
-      var jsonObject = JSON.parse(body.toString());
-
-      var newJSONArray = {};
-      var key = 'data';
-      newJSONArray[key] = [];
-      var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
-      newJSONArray[key].push(datum);
-      memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
-  });
-  memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
-    console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
-  });
-})
+ 
   
   
 })
