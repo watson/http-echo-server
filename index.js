@@ -3,21 +3,19 @@
 
 var getPort = require('get-port')
 const concat = require('concat-stream');
-var bodybuffer;
-var body='';
+var body=[];
 var fs = require('fs')
 var striptags = require('striptags');
 var memjs = require('memjs');
 var memjsClient = memjs.Client.create();
 
 var server = require('net').createServer(function (req, resp) {
-    req.on('data', function(chunk){
-        bodybuffer += chunk;
-      //body.push(chunk);
-    });
-    req.on('end',function(){
-        body = JSON.stringify(bodybuffer)
-        console.log('boddybuffer:'+ body)
+    req.on('data', (chunk) => {
+  body.push(chunk);
+}).on('end', () => {
+        body = Buffer.concat(body).toString();
+//         body = JSON.stringify(bodybuffer)
+        console.log('body:'+ body)
         var jsonObject = JSON.parse(body);
         console.log('json: ' + jsonObject);
         var jsonData = {"name": jsonObject.name,"color": jsonObject.color,"petName": jsonObject.petName};
