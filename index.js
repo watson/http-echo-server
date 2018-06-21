@@ -26,7 +26,7 @@ app.post('/', function(req, res) {
     
 });
 app.get('/', function(req, res) {
-  var id = req.params.id;
+  var id = req.params[0];
   console.log('id: '+id);
   var responseBody;
   memjsClient.get(id, function(err,val) {
