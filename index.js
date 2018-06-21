@@ -26,13 +26,14 @@ app.post('/', function(req, res) {
     
 });
 app.get('/', function(req, res) {
-  var id = req.param('id');
+  var id = req.params('id');
   var responseBody;
   memjsClient.get(id, function(err,val) {
       console.log('key: %s,value: %s',id,val);
       responseBody = val;
-    });   
-  res.send(responseBody);
+    });
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(responseBody));
 });
 app.listen(3000);
 
