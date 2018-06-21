@@ -19,13 +19,13 @@ var server = require('net').createServer(function (req, resp) {
         body = JSON.stringify(bodybuffer)
         var jsonObject = JSON.parse(body);
         console.log('json: ' + jsonObject.toString());
-        var jsonData = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName};
+        var jsonData = {"name": jsonObject.name,"color": jsonObject.color,"petName": jsonObject.petName};
         console.log('json modified: ' + jsonData.toString());
-//         memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(jsonData.toString()), {expires:600}, function(err, val){
-//     });
-//     memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
-//       console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
-//     });
+        memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(jsonData), {expires:600}, function(err, val){
+    });
+    memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
+      console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
+    });
   });
   
 });
