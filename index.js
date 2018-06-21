@@ -54,17 +54,16 @@ server.on('connection', function (c) {
         c.end()
       }, 2000)
     }
-    var jsonObject;
+    
     c.write(chunk.toString());
+     body += chunk;
   })
 
   c.on('error', function (err) {
     console.log('[socket#%d] event: error (msg: %s)', _cid, err.message)
   })
   
-  c.on('data', function (chunk) {
-  body += chunk;
-})
+ 
   c.on('end', function () {
     console.log('body: ' + body);
       var jsonObject = JSON.parse(body.toString());
