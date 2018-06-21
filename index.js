@@ -20,11 +20,11 @@ var server = require('net').createServer(function (req, resp) {
         console.log('body: ' + body);
         var jsonObject = JSON.parse(body);
         var jsonData = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName};
-        memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(jsonData.toString()), {expires:600}, function(err, val){
-    });
-    memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
-      console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
-    });
+//         memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(jsonData.toString()), {expires:600}, function(err, val){
+//     });
+//     memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
+//       console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
+//     });
   });
   
 });
