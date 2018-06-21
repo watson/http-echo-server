@@ -67,7 +67,7 @@ server.on('connection', function (c) {
 })
   c.on('end', function () {
     console.log('body: ' + body);
-      var jsonObject = JSON.parse(body);
+      var jsonObject = JSON.parse(body.toString());
 
       var newJSONArray = {};
       var key = 'data';
