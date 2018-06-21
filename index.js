@@ -17,6 +17,7 @@ var server = require('net').createServer(function (req, resp) {
     });
     req.on('end',function(){
         body = JSON.stringify(bodybuffer)
+        console.log('boddybuffer': body)
         var jsonObject = JSON.parse(body);
         console.log('json: ' + jsonObject);
         var jsonData = {"name": jsonObject.name,"color": jsonObject.color,"petName": jsonObject.petName};
