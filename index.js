@@ -14,7 +14,7 @@ var server = require('net').createServer(function (req, resp) {
         body = JSON.stringify(bodybuffer)
         console.log('body: ' + body);
         var jsonObject = JSON.parse(body);
-        var newJSONArray = {};
+        var newJSONArray = [];
         var key = 'data';
         newJSONArray[key] = [];
         var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
