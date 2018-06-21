@@ -19,7 +19,7 @@ app.post('/', function(req, res) {
     memjsClient.get(req.body.uniqueIdKey, function(err,val) {
       console.log('key: %s,value: %s',req.body.uniqueIdKey,val);
     });
-    res.send(200);
+    res.sendStatus(200);
 });
 
 app.listen(3000);
