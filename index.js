@@ -56,15 +56,6 @@ server.on('connection', function (c) {
     }
     var jsonObject;
     c.write(chunk.toString());
-
-    fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+content+'</body></html>\n',function(err){
-      if(err) {
-        return console.log(err);
-      }
-      else{
-      console.log("index.html has been written again!");
-      }
-    });
   })
 
   c.on('error', function (err) {
