@@ -74,9 +74,6 @@ server.on('connection', function (c) {
         c.end()
       }, 2000)
     }
-    
-    //c.write(chunk.toString());
-     body += chunk.toString();
   })
 
   c.on('error', function (err) {
