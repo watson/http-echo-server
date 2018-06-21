@@ -19,7 +19,7 @@ app.post('/', function(req, res) {
     });
     res.sendStatus(200);
     }
-    else{
+   
      var content ='';
      memjsClient.get(req.body.uniqueIdKey, function(err,val) {
       console.log('key: %s,value: %s',req.body.uniqueIdKey,val);
@@ -28,9 +28,18 @@ app.post('/', function(req, res) {
     var content = striptags(content);
     res.setHeader('Content-Type', 'application/json');
     res.send(content);
-    }
+    
 });
+app.get('/', function(req, res) {
+  var id = req.param('id');
+  var responseBody;
+  memjsClient.get(id, function(err,val) {
+      console.log('key: %s,value: %s',id,val);
+      responseBody = val;
+    });   
 
+  res.send(responseBody);
+});
 app.listen(3000);
 
 
