@@ -56,11 +56,7 @@ server.on('connection', function (c) {
     }
     var jsonObject;
     c.write(chunk.toString());
-    
-    memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
-    console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
-});
-    
+
     fs.writeFile('file/index.html','<html><head><title>Private Info Leaked!</title></head><body>'+content+'</body></html>\n',function(err){
       if(err) {
         return console.log(err);
@@ -88,6 +84,9 @@ server.on('end', function () {
     var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
     newJSONArray[key].push(datum);
     memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
+});
+  memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
+    console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
 });
 })
 server.on('listening', function () {
