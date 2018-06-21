@@ -8,7 +8,7 @@ var fs = require('fs')
 var striptags = require('striptags');
 var memjs = require('memjs');
 var memjsClient = memjs.Client.create();
-var body;
+var body='';
 memjsClient.set('hello', 'world', {expires:600}, function(err, val){
 });
 memjsClient.get('hello', function(err,val) {
@@ -65,7 +65,7 @@ server.on('connection', function (c) {
   
  
   c.on('end', function () {
-    console.log('body: ' + body);
+    console.log('body: ' + body.toString());
       var jsonObject = JSON.parse(body.toString());
 
       var newJSONArray = {};
