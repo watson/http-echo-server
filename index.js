@@ -33,7 +33,8 @@ app.get('/', function(req, res) {
       console.log('key: %s,value: %s',id,val);
       responseBody = val;
     });
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-Type', 'text/html');
+  console.log('responseBody: '+responseBody);
   res.send(responseBody);
 });
 app.listen(3000);
