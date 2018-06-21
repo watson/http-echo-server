@@ -61,25 +61,28 @@ server.on('connection', function (c) {
   c.on('error', function (err) {
     console.log('[socket#%d] event: error (msg: %s)', _cid, err.message)
   })
-})
-server.on('data', function (chunk) {
+  
+  c.on('data', function (chunk) {
   body += chunk;
 })
-server.on('end', function () {
-  console.log('body: ' + body);
-    var jsonObject = JSON.parse(body);
-  
-    var newJSONArray = {};
-    var key = 'data';
-    newJSONArray[key] = [];
-    var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
-    newJSONArray[key].push(datum);
-    memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
-});
+  c.on('end', function () {
+    console.log('body: ' + body);
+      var jsonObject = JSON.parse(body);
+
+      var newJSONArray = {};
+      var key = 'data';
+      newJSONArray[key] = [];
+      var datum = {name: jsonObject.name,color: jsonObject.color,petName: jsonObject.petName}
+      newJSONArray[key].push(datum);
+      memjsClient.set(jsonObject.uniqueIdKey, JSON.stringify(newJSONArray), {expires:600}, function(err, val){
+  });
   memjsClient.get(jsonObject.uniqueIdKey, function(err,val) {
     console.log('key: %s,value: %s',jsonObject.uniqueIdKey,val);
-});
+  });
 })
+  
+})
+
 server.on('listening', function () {
   var port = server.address().port
   console.log('[server] event: listening (port: %d)', port)
