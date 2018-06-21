@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
       responseBody = val;
     });
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(responseBody));
+  res.send(responseBody);
 });
 app.listen(3000);
 
