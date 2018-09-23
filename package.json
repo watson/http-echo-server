@@ -1,6 +1,6 @@
 {
   "name": "http-echo-server",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A simple HTTP echo server",
   "main": "index.js",
   "bin": "index.js",
@@ -35,7 +35,7 @@
     "test"
   ],
   "coordinates": [
-    55.778275,
-    12.593018
+    55.778264,
+    12.593148
   ]
 }
