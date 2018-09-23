@@ -50,16 +50,18 @@ curl http://localhost:<port>
 
 ## Setting listening port
 
-To set the http port, export the environment variable `port`
+To set the http port, either supply the port as an argument to the
+`http-echo-server` executable:
+
+```
+http-echo-server 3005
+```
+
+Or use the `PORT` environment variable:
+
 ```
 export PORT=3005
 http-echo-server
-```
-
-or as a one line command
-
-```
-PORT=3005 http-echo-server
 ```
 
 ## License

@@ -60,8 +60,10 @@ server.on('error', function (err) {
   console.log('[server] event: error (msg: %s)', err.message)
 })
 
-if (process.env.PORT) {
-  server.listen(process.env.PORT)
+var port = process.argv[2] || process.env.PORT
+
+if (port) {
+  server.listen(port)
 } else {
   getPort({port: 3000}).then(function (port) {
     server.listen(port)
