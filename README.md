@@ -7,6 +7,7 @@ The server makes no attempt to understand the incoming HTTP request
 hence it doesn't know when the request is completed and therefore just
 terminates the TCP connection 2 seconds after the first data packet.
 
+[![npm](https://img.shields.io/npm/v/http-echo-server.svg)](https://www.npmjs.com/package/http-echo-server)
 [![Build status](https://travis-ci.org/watson/http-echo-server.svg?branch=master)](https://travis-ci.org/watson/http-echo-server)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
@@ -66,4 +67,4 @@ http-echo-server
 
 ## License
 
-MIT
+[MIT](LICENSE)
