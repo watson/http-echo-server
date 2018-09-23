@@ -8,7 +8,7 @@ var cid = 0
 
 module.exports = server // for testing
 
-onEmit(server, {ignore: ['connection', 'listening', 'error']}, function (eventName) {
+onEmit(server, { ignore: ['connection', 'listening', 'error'] }, function (eventName) {
   console.log('[server] event:', eventName)
 })
 
@@ -18,7 +18,7 @@ server.on('connection', function (c) {
 
   console.log('[server] event: connection (socket#%d)', _cid)
 
-  onEmit(c, {ignore: ['lookup', 'error']}, function (eventName) {
+  onEmit(c, { ignore: ['lookup', 'error'] }, function (eventName) {
     console.log('[socket#%d] event:', _cid, eventName)
   })
 
@@ -65,7 +65,7 @@ var port = process.argv[2] || process.env.PORT
 if (port) {
   server.listen(port)
 } else {
-  getPort({port: 3000}).then(function (port) {
+  getPort({ port: 3000 }).then(function (port) {
     server.listen(port)
   })
 }
