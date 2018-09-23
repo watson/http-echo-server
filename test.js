@@ -19,6 +19,7 @@ server.on('listening', function () {
     assert.strictEqual(lines.shift().slice(0, 6), 'Date: ')
     assert.strictEqual(lines.shift(), 'Connection: close')
     assert.strictEqual(lines.shift(), 'Content-Type: text/plain')
+    assert.strictEqual(lines.shift(), 'Access-Control-Allow-Origin: *')
     assert.strictEqual(lines.shift(), '')
     assert.strictEqual(lines.shift(), 'hello world')
     server.close()

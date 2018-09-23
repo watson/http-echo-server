@@ -38,6 +38,7 @@ server.on('connection', function (c) {
       c.write('Date: ' + (new Date()).toString() + '\r\n')
       c.write('Connection: close\r\n')
       c.write('Content-Type: text/plain\r\n')
+      c.write('Access-Control-Allow-Origin: *\r\n')
       c.write('\r\n')
       setTimeout(function () {
         c.end()
