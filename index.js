@@ -12,7 +12,7 @@ const argv = require('yargs')
 	.option('delay', {
 		alias: 'd',
 		type: 'number',
-		description: 'Delay before closing connection (ms)',
+		description: 'Delay before returning connection (ms)',
 		default: 2000
 	})
 .argv
