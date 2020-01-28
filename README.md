@@ -49,21 +49,12 @@ then curl it:
 curl http://localhost:<port>
 ```
 
-## Setting listening port
+## Command line args
 
-To set the http port, either supply the port as an argument to the
-`http-echo-server` executable:
-
-```
-http-echo-server 3005
-```
-
-Or use the `PORT` environment variable:
-
-```
-export PORT=3005
-http-echo-server
-```
+| arg | description |
+| - | - |
+| `--port` or `-p` | The port to listen on (default: 3000) |
+| `--delay` or `-d` | The delay before returning (default: 2000) |
 
 ## License
 

@@ -3,6 +3,20 @@
 
 var getPort = require('get-port')
 var server = require('net').createServer()
+const argv = require('yargs')
+	.option('port', {
+		alias: 'p',
+		type: 'number',
+		description: 'The port to listn on'
+	})
+	.option('delay', {
+		alias: 'd',
+		type: 'number',
+		description: 'Delay before closing connection (ms)',
+		default: 2000
+	})
+.argv
+const util = require('util')
 
 var cid = 0
 
@@ -42,7 +56,7 @@ server.on('connection', function (c) {
       c.write('\r\n')
       setTimeout(function () {
         c.end()
-      }, 2000)
+      }, argv.delay)
     }
     c.write(chunk.toString())
   })
@@ -61,7 +75,7 @@ server.on('error', function (err) {
   console.log('[server] event: error (msg: %s)', err.message)
 })
 
-var port = process.argv[2] || process.env.PORT
+var port = argv.port || process.env.PORT
 
 if (port) {
   server.listen(port)
