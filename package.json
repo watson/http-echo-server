@@ -11,10 +11,10 @@
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
   "dependencies": {
-    "get-port": "^4.0.0"
+    "get-port": "^5.1.1"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^14.3.3"
   },
   "preferGlobal": true,
   "repository": {
