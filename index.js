@@ -1,32 +1,32 @@
 #!/usr/bin/env node
 'use strict'
 
-var getPort = require('get-port')
-var server = require('net').createServer()
+const getPort = require('get-port')
+const server = require('net').createServer()
 
-var cid = 0
+let cid = 0
 
 module.exports = server // for testing
 
 onEmit(server, { ignore: ['connection', 'listening', 'error'] }, function (eventName) {
-  console.log('[server] event:', eventName)
+  console.log(`[${new Date().toISOString()}][server] event:`, eventName)
 })
 
 server.on('connection', function (c) {
-  var gotData = false
-  var _cid = ++cid
+  let gotData = false
+  const _cid = ++cid
 
-  console.log('[server] event: connection (socket#%d)', _cid)
+  console.log(`[${new Date().toISOString()}][server] event: connection (socket#${_cid})`)
 
   onEmit(c, { ignore: ['lookup', 'error'] }, function (eventName) {
-    console.log('[socket#%d] event:', _cid, eventName)
+    console.log(`[${new Date().toISOString()}][socket#${_cid}] event:`, eventName)
   })
 
   c.on('lookup', function (err, address, family) {
     if (err) {
-      console.log('[socket#%d] event: lookup (error: %s)', _cid, err.message)
+      console.log(`[${new Date().toISOString()}][socket#${_cid}] event: lookup (error: ${err.message})`)
     } else {
-      console.log('[socket#%d] event: lookup (address: %s, family: %s)', _cid, address, family)
+      console.log(`[${new Date().toISOString()}][socket#${_cid}] event: lookup (address: ${address}, family: ${family})`)
     }
   })
 
@@ -48,31 +48,31 @@ server.on('connection', function (c) {
   })
 
   c.on('error', function (err) {
-    console.log('[socket#%d] event: error (msg: %s)', _cid, err.message)
+    console.log(`[${new Date().toISOString()}][socket#${_cid}] event: error (msg: ${err.message})`)
   })
 })
 
 server.on('listening', function () {
-  var port = server.address().port
-  console.log('[server] event: listening (port: %d)', port)
+  const port1 = server.address().port
+  console.log(`[${new Date().toISOString()}][server] event: listening (port: ${port1})`)
 })
 
 server.on('error', function (err) {
-  console.log('[server] event: error (msg: %s)', err.message)
+  console.log(`[${new Date().toISOString()}][server] event: error (msg: ${err.message})`)
 })
 
-var port = process.argv[2] || process.env.PORT
+const port = process.argv[2] || process.env.PORT
 
 if (port) {
   server.listen(port)
 } else {
-  getPort({ port: 3000 }).then(function (port) {
-    server.listen(port)
+  getPort({ port: 3000 }).then(function (port2) {
+    server.listen(port2)
   })
 }
 
 function onEmit (emitter, opts, cb) {
-  var emitFn = emitter.emit
+  const emitFn = emitter.emit
   emitter.emit = function (eventName) {
     if (opts.ignore.indexOf(eventName) === -1) cb.apply(null, arguments)
     return emitFn.apply(emitter, arguments)
