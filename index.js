@@ -5,6 +5,7 @@ const getPort = require('get-port')
 const server = require('net').createServer()
 
 let cid = 0
+let timeout = 2000
 
 module.exports = server // for testing
 
@@ -42,7 +43,7 @@ server.on('connection', function (c) {
       c.write('\r\n')
       setTimeout(function () {
         c.end()
-      }, 2000)
+      }, timeout)
     }
     c.write(chunk.toString())
   })
@@ -70,6 +71,14 @@ if (port) {
     server.listen(port2)
   })
 }
+
+const delay = process.argv[3] || process.env.DELAY
+
+if (delay) {
+  timeout = delay
+}
+
+console.log(`[${new Date().toISOString()}][server] delay: ${timeout}ms`)
 
 function onEmit (emitter, opts, cb) {
   const emitFn = emitter.emit
