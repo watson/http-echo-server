@@ -6,7 +6,8 @@
   "bin": "index.js",
   "scripts": {
     "test": "standard && node test.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:dev": "DELAY=250 PORT=3333 npm run start"
   },
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
