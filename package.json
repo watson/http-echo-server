@@ -1,30 +1,33 @@
 {
   "name": "http-echo-server",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A simple HTTP echo server",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "src/index.js",
+  "bin": "src/index.js",
   "scripts": {
-    "test": "standard && node test.js",
-    "start": "node index.js"
+    "test": "standard && node src/test.js",
+    "start": "node src/index.js",
+    "start:dev": "DELAY=250 PORT=3333 npm run start",
+    "release": "standard-version -s"
   },
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
   "dependencies": {
-    "get-port": "^4.0.0"
+    "get-port": "^5.1.1"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^16.0.3",
+    "standard-version": "^9.0.0"
   },
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/watson/http-echo-server.git"
+    "url": "git+https://github.com/Mualig/http-echo-server.git"
   },
   "bugs": {
-    "url": "https://github.com/watson/http-echo-server/issues"
+    "url": "https://github.com/Mualig/http-echo-server/issues"
   },
-  "homepage": "https://github.com/watson/http-echo-server",
+  "homepage": "https://github.com/Mualig/http-echo-server",
   "keywords": [
     "http",
     "tcp",
@@ -33,9 +36,5 @@
     "debug",
     "debugger",
     "test"
-  ],
-  "coordinates": [
-    55.778264,
-    12.593148
   ]
 }
