@@ -7,7 +7,8 @@
   "scripts": {
     "test": "standard && node src/test.js",
     "start": "node src/index.js",
-    "start:dev": "DELAY=250 PORT=3333 npm run start"
+    "start:dev": "DELAY=250 PORT=3333 npm run start",
+    "release": "standard-version -s"
   },
   "author": "Thomas Watson Steen <w@tson.dk>",
   "license": "MIT",
@@ -15,7 +16,8 @@
     "get-port": "^5.1.1"
   },
   "devDependencies": {
-    "standard": "^16.0.3"
+    "standard": "^16.0.3",
+    "standard-version": "^9.0.0"
   },
   "preferGlobal": true,
   "repository": {
