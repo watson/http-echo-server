@@ -1,6 +1,6 @@
 {
   "name": "http-echo-server",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A simple HTTP echo server",
   "main": "src/index.js",
   "bin": "src/index.js",
