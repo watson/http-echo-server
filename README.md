@@ -1,19 +1,19 @@
 # http-echo-server
 
-Will accept any TCP connection and echo back a HTTP response with the
+Forked from [watson/http-echo-server](https://github.com/watson/http-echo-server/)
+
+Will accept any TCP connection and echo back an HTTP response with the
 entire content of the incoming TCP connection.
 
 The server makes no attempt to understand the incoming HTTP request
 hence it doesn't know when the request is completed and therefore just
 terminates the TCP connection 2 seconds after the first data packet.
 
-[![npm](https://img.shields.io/npm/v/http-echo-server.svg)](https://www.npmjs.com/package/http-echo-server)
-[![Build status](https://travis-ci.org/watson/http-echo-server.svg?branch=master)](https://travis-ci.org/watson/http-echo-server)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/standard/standard)
 
 ## Installation
 
-To setup a simple echo-server on Heroku just click this button:
+To set up a simple echo-server on Heroku just click this button:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
@@ -27,7 +27,7 @@ versions of npm):
 npx http-echo-server
 ```
 
-Or if you whish to install the module globally:
+Or if you wish to install the module globally:
 
 ```
 npm install http-echo-server -g
@@ -62,6 +62,22 @@ Or use the `PORT` environment variable:
 
 ```
 export PORT=3005
+http-echo-server
+```
+
+## Setting response delay
+
+To set the response delay (in milliseconds), either supply the port as the 2nd argument to the
+`http-echo-server` executable:
+
+```
+http-echo-server 3005 250
+```
+
+Or use the `PORT` environment variable:
+
+```
+export DELAY=250
 http-echo-server
 ```
 

@@ -20,12 +20,12 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/watson/http-echo-server.git"
+    "url": "git+https://github.com/Mualig/http-echo-server.git"
   },
   "bugs": {
-    "url": "https://github.com/watson/http-echo-server/issues"
+    "url": "https://github.com/Mualig/http-echo-server/issues"
   },
-  "homepage": "https://github.com/watson/http-echo-server",
+  "homepage": "https://github.com/Mualig/http-echo-server",
   "keywords": [
     "http",
     "tcp",
@@ -34,9 +34,5 @@
     "debug",
     "debugger",
     "test"
-  ],
-  "coordinates": [
-    55.778264,
-    12.593148
   ]
 }
