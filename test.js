@@ -1,19 +1,19 @@
 'use strict'
 
-var assert = require('assert')
-var net = require('net')
+const assert = require('assert')
+const net = require('net')
 
-var server = require('./')
+const server = require('./')
 
 server.on('listening', function () {
-  var port = server.address().port
-  var client = net.createConnection({ port: port })
-  var result = ''
+  const port = server.address().port
+  const client = net.createConnection({ port: port })
+  let result = ''
   client.on('data', function (chunk) {
     result += chunk
   })
   client.on('end', function () {
-    var lines = result.split('\r\n')
+    const lines = result.split('\r\n')
     assert.strictEqual(lines.length, 7)
     assert.strictEqual(lines.shift(), 'HTTP/1.1 200 OK')
     assert.strictEqual(lines.shift().slice(0, 6), 'Date: ')
