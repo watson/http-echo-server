@@ -3,7 +3,7 @@
 const assert = require('assert')
 const net = require('net')
 
-const server = require('./')
+const server = require('./index')
 
 server.on('listening', function () {
   const port = server.address().port
